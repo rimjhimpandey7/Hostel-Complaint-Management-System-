@@ -2,7 +2,6 @@
 
 A full-stack, real-world **Hostel Complaint Management System** web application designed to eliminate paper complaint registers in college hostels. It enables students to register maintenance complaints online with image attachments, track live resolution milestones (`Submitted` -> `Assigned` -> `In Progress` -> `Resolved`), and provides hostel wardens/administrators with powerful tools for complaint assignment, status management, student monitoring, and interactive analytics visualized via **Recharts**.
 
----
 
 ## 🚀 Key Features
 
@@ -28,8 +27,6 @@ A full-stack, real-world **Hostel Complaint Management System** web application 
   - Delete inappropriate or invalid complaint records.
 - **Student Account Management**: View all registered students, total complaint count per resident, search, and manage accounts.
 
----
-
 ## 🛠️ Technology Stack
 
 | Component | Technology Used |
@@ -38,8 +35,6 @@ A full-stack, real-world **Hostel Complaint Management System** web application 
 | **Backend** | Node.js, Express.js, JWT Authentication (`jsonwebtoken`), `bcryptjs`, Multer (File Uploads), Nodemailer (Transactional Emails) |
 | **Database** | PostgreSQL (Relational schema, Foreign Keys, Indexes, Triggers, Auto-timestamps) |
 | **Tools** | VS Code, Git/GitHub, Postman, pgAdmin |
-
----
 
 ## 📁 Project Folder Structure
 
@@ -105,8 +100,6 @@ Hostel Complaint Management System/
 └── .gitignore
 ```
 
----
-
 ## 🗄️ Database Setup (PostgreSQL)
 
 1. Open **pgAdmin** or PostgreSQL terminal (`psql`).
@@ -123,8 +116,6 @@ Hostel Complaint Management System/
    psql -U postgres -d hostel_complaint_db -f database/seed.sql
    ```
 
----
-
 ## 🔑 Demo Account Credentials
 
 | Role | Email | Password | Details |
@@ -132,8 +123,6 @@ Hostel Complaint Management System/
 | **Admin** | `admin@hostel.com` | `password123` | Chief Hostel Warden |
 | **Student** | `rahul.sharma@student.com` | `password123` | Room B-204 (Boys Hostel) |
 | **Student** | `ananya.patel@student.com` | `password123` | Room A-108 (Girls Hostel) |
-
----
 
 ## ⚙️ Environment Variables Setup
 
@@ -184,8 +173,6 @@ npm run dev
 ```
 *Frontend app runs on `http://localhost:5173`*
 
----
-
 ## 📮 API Documentation & Postman Collection
 
 Import `postman/Hostel_Complaint_API.postman_collection.json` into **Postman**.
@@ -215,15 +202,11 @@ Import `postman/Hostel_Complaint_API.postman_collection.json` into **Postman**.
 
 > **How to authorize in Postman**: Include `Authorization: Bearer <YOUR_JWT_TOKEN>` in the headers of protected endpoints.
 
----
-
 ## 🔮 Future Improvements
 1. **SMS Notification Integration**: Send instant SMS alerts via Twilio/Fast2SMS.
 2. **Student Feedback & Rating**: Allow students to rate staff service after complaint resolution.
 3. **PWA Mobile App Support**: Enable offline reporting and push notifications.
 
----
-
 ## 👨‍💻 Author
-**Developed for Hostel Management & Resident Welfare**
+Rimjhim Pandey
 - **Technology**: React.js, Express.js, PostgreSQL, Bootstrap 5, Recharts, JWT.
