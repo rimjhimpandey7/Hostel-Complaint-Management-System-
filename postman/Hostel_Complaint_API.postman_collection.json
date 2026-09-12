@@ -1,0 +1,252 @@
+{
+  "info": {
+    "_postman_id": "9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+    "name": "Hostel Complaint Management System API",
+    "description": "Complete REST API collection for Hostel Complaint Management Portal. Protect requests using Bearer JWT Token in Authorization Header.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register Student",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Rohan Mehta\",\n  \"email\": \"rohan.mehta@student.com\",\n  \"phone\": \"+91 9988776655\",\n  \"student_id\": \"STU-2024-099\",\n  \"room_number\": \"C-104\",\n  \"hostel_block\": \"Block C - Boys Hostel\",\n  \"password\": \"password123\",\n  \"confirmPassword\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "Login User (Student / Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"rahul.sharma@student.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Forgot Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"rahul.sharma@student.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/forgot-password",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "forgot-password"]
+            }
+          }
+        },
+        {
+          "name": "Reset Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"YOUR_RESET_TOKEN_HERE\",\n  \"newPassword\": \"newpassword123\",\n  \"confirmPassword\": \"newpassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/reset-password",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "reset-password"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Student Operations",
+      "item": [
+        {
+          "name": "Get My Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "profile"]
+            }
+          }
+        },
+        {
+          "name": "Create Complaint (With Image)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "title", "value": "Ceiling Light Sparking", "type": "text" },
+                { "key": "category", "value": "Electrical", "type": "text" },
+                { "key": "description", "value": "Main LED bulb flickers and sparks when turned on.", "type": "text" },
+                { "key": "room_number", "value": "B-204", "type": "text" },
+                { "key": "priority", "value": "High", "type": "text" },
+                { "key": "image", "type": "file", "src": [] }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/complaints",
+              "host": ["{{baseUrl}}"],
+              "path": ["complaints"]
+            }
+          }
+        },
+        {
+          "name": "Get My Complaints",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/complaints/my?status=Pending",
+              "host": ["{{baseUrl}}"],
+              "path": ["complaints", "my"],
+              "query": [
+                { "key": "status", "value": "Pending" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Complaint By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/complaints/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["complaints", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin Operations",
+      "item": [
+        {
+          "name": "Admin Get All Complaints",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{adminJwtToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/admin/complaints",
+              "host": ["{{baseUrl}}"],
+              "path": ["admin", "complaints"]
+            }
+          }
+        },
+        {
+          "name": "Admin Update Status",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{adminJwtToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"In Progress\",\n  \"remarks\": \"Electrician dispatched to room.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/admin/complaints/1/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["admin", "complaints", "1", "status"]
+            }
+          }
+        },
+        {
+          "name": "Admin Assign Staff",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{adminJwtToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assigned_to\": \"Electrical Dept - Ramesh Kumar\",\n  \"remarks\": \"Assigned on priority.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/admin/complaints/1/assign",
+              "host": ["{{baseUrl}}"],
+              "path": ["admin", "complaints", "1", "assign"]
+            }
+          }
+        },
+        {
+          "name": "Admin Get Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{adminJwtToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/admin/analytics",
+              "host": ["{{baseUrl}}"],
+              "path": ["admin", "analytics"]
+            }
+          }
+        },
+        {
+          "name": "Admin Get Students",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{adminJwtToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/admin/students",
+              "host": ["{{baseUrl}}"],
+              "path": ["admin", "students"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000/api" },
+    { "key": "jwtToken", "value": "PASTE_STUDENT_JWT_TOKEN_HERE" },
+    { "key": "adminJwtToken", "value": "PASTE_ADMIN_JWT_TOKEN_HERE" }
+  ]
+}

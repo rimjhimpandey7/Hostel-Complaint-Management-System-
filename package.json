@@ -1,0 +1,15 @@
+{
+  "name": "hostel-complaint-management-system",
+  "version": "1.0.0",
+  "description": "Fullstack Hostel Complaint Management System",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "start": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "backend": "npm run dev --prefix backend",
+    "frontend": "npm run dev --prefix frontend",
+    "share": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\" \"ssh -o StrictHostKeyChecking=no -R 80:localhost:5173 nokey@localhost.run\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
