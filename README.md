@@ -1,11 +1,9 @@
 # 🏢 Hostel Complaint Management System
 
-A full-stack, real-world **Hostel Complaint Management System** web application designed to eliminate paper complaint registers in college hostels. It enables students to register maintenance complaints online with image attachments, track live resolution milestones (`Submitted` -> `Assigned` -> `In Progress` -> `Resolved`), and provides hostel wardens/administrators with powerful tools for complaint assignment, status management, student monitoring, and interactive analytics visualized via **Recharts**.
+A full-stack, real-world **Hostel Complaint Management System** web application designed to eliminate paper complaint registers in college hostels. It enables students to register maintenance complaints online with image attachments, track live resolution mileston and provides hostel wardens/administrators with powerful tools for complaint assignment, status management, student monitoring, and interactive analytics visualized via **Recharts**.
 
-
-## 🚀 Key Features
-
-### 👨‍🎓 Student Role
+🚀 Key Features
+👨‍🎓 Student Role
 - **Account Registration & Security**: Register with Student ID, Room Number, Hostel Block, and bcrypt-hashed passwords.
 - **Interactive Overview Dashboard**: Quick-view metrics for total, pending, in-progress, and resolved complaints.
 - **Submit Complaint with Multer Upload**: Form supporting title, category selection, priority level (Low, Medium, High, Emergency), detailed description, and image attachments.
@@ -38,7 +36,6 @@ A full-stack, real-world **Hostel Complaint Management System** web application 
 
 ## 📁 Project Folder Structure
 
-```
 Hostel Complaint Management System/
 ├── database/
 │   ├── schema.sql                     # PostgreSQL table definitions & triggers
@@ -115,15 +112,6 @@ Hostel Complaint Management System/
    ```bash
    psql -U postgres -d hostel_complaint_db -f database/seed.sql
    ```
-
-## 🔑 Demo Account Credentials
-
-| Role | Email | Password | Details |
-| :--- | :--- | :--- | :--- |
-| **Admin** | `admin@hostel.com` | `password123` | Chief Hostel Warden |
-| **Student** | `rahul.sharma@student.com` | `password123` | Room B-204 (Boys Hostel) |
-| **Student** | `ananya.patel@student.com` | `password123` | Room A-108 (Girls Hostel) |
-
 ## ⚙️ Environment Variables Setup
 
 ### Backend (`backend/.env`)
@@ -200,7 +188,7 @@ Import `postman/Hostel_Complaint_API.postman_collection.json` into **Postman**.
 - `DELETE /api/admin/students/:id` - Remove student account
 - `GET /api/admin/analytics` - Recharts analytics data payload
 
-> **How to authorize in Postman**: Include `Authorization: Bearer <YOUR_JWT_TOKEN>` in the headers of protected endpoints.
+ **How to authorize in Postman**: Include `Authorization: Bearer <YOUR_JWT_TOKEN>` in the headers of protected endpoints.
 
 ## 🔮 Future Improvements
 1. **SMS Notification Integration**: Send instant SMS alerts via Twilio/Fast2SMS.
